@@ -1,0 +1,602 @@
+/* 
+::before / ::after 설명
+1. ::before 역할 - 선택한 앨리먼트(요소=태그)앞에 가상 콘텐츠 삽입하는 역할
+
+2. ::after 역할 - 선택한 앨리먼트 위에 가상 콘텐츠 삽입하는 역할
+
+*/
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: pretendard;
+}
+
+/* 메뉴 */
+
+#gnb {
+    font-weight: bold;
+}
+header img {
+    width: 130px;
+    margin: 10px 0 0 80px;
+}
+ul {
+    list-style: none;
+    font-size: 14px;
+}
+.snb li {
+    margin-top: 45px;
+    font-weight: normal;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+a:hover {
+    color: #ff4e60;
+}
+#wrap {
+    width: 100%;
+    position: relative;
+    
+}
+
+header {
+    width: 100%;
+    background: #ffffff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 0 100px;
+    border-bottom: 1px solid #d8d8d8;
+    display: flex;
+    /* 플렉스는 반응형 웹 사용 시 쓰는 것
+    padding, margin을 사용할 수 없음 */
+    justify-content: space-between ;
+    /* 컨텐츠 사이의 간격을 균일하게 처리 */
+    box-sizing: border-box;
+    z-index: 2000;
+    /* border 안쪽으로 들어와라 */
+}
+header img {
+    width: 130px;
+    padding: 30px 0;
+}
+header #gnb {
+    display: flex;
+    justify-content: space-evenly;
+    /* 컨텐츠 사이와 양끝 간격 균일하게 처리 */
+    align-items: center;
+    flex-basis: 84%;
+}
+
+header > #gnb::before {
+    /* 컨텐츠 빈공간 출력 */
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 157px;
+    left: 0;
+    background: #fff;
+    border-top: 1px solid #d8d8d8;
+    box-shadow: 0px 10px 10px 0px rgba(186, 186, 187, 0.06) ;
+    display: block;
+    height: 170px;
+}
+
+header > #gnb.on::before {
+    display: block;
+}
+
+header > #gnb::before {
+    display: none;
+}
+
+
+header > #gnb > li .snb {
+    position: absolute;
+    top: 150px;
+    display: none;
+    /* display:none을 사용하는 이유 -> 일시적으로 안보이게 하려고 */
+}
+
+header > #gnb.on >li .snb {
+    display: block;
+}
+header > #gnb > li >.snb > ul > li+li {
+    margin-top: 20px;
+}
+/* li+li는 첫번째 li 이후 두번째 li부터 효과를 똑같이 처리하기 위해 설정 */
+
+/* body {
+    background: url(/images/lines.svg);
+} */
+
+/* section */
+
+#wrap1 {
+    border: 1px solid red;
+    margin-bottom: 30px;
+}
+.city {
+    font-weight: 600;
+    color: #777777;
+    font-size: 18px;
+    position: absolute;
+    top: 300px;
+    left: 230px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #777777 ;
+    cursor: pointer;
+}
+.city:hover {
+    color: #ff4e60;
+    cursor: pointer;
+    border-bottom: 2px solid #ff4e60 ;
+}
+.city1 {
+    font-weight: 600;
+    font-size: 18px;
+    position: absolute;
+    top: 300px;
+    left: 390px;
+    color: #464646;
+    cursor: pointer;
+}
+#what{
+    font-size: 70px;
+    font-weight: bold;
+    position: absolute;
+    top: 420px;
+    left: 230px;
+    line-height: 100px;
+}
+#icon1 {
+    width: 60px;
+    position: absolute;
+    top: 640px;
+    left: 495px;
+}
+#sub {
+    font-size: 26px;
+    font-weight: 600;
+    position: absolute;
+    top: 755px;
+    left: 230px;
+}
+input {
+    border-radius: 10px;
+    border: 2px solid #747474;
+    width: 500px;
+    height: 62px;
+    position: absolute;
+    top: 850px;
+    left: 230px;
+    cursor: pointer;
+}
+input[placeholder="꽁치 묵은지찌개"]{
+    font-size: 28px;
+    padding-left: 25px;
+    cursor: pointer;
+}
+#search {
+    position: absolute;
+    top: 857px;
+    left: 660px;
+    cursor: pointer;
+}
+#search:hover {
+    color: #b92f2f;
+    cursor: pointer;
+    /* 호버하면 색 바뀌게 처리하기! */
+}
+
+/* 사진 넣기 */
+
+.photo img {
+    width: 550px;
+    height: 650px;
+    /* border: 1px solid black; */
+    position: absolute;
+    top: 300px;
+    right: 210px;
+    border-radius: 400px 400px 0 0;
+    display: fixed;
+}
+
+/* near 메뉴 */
+#hr {
+    width: 100%;
+    border: 1px solid #d8d8d8;
+    position: absolute;
+    top: 1079px;
+}
+#near {
+    font-size: 63px;
+    font-weight: bold;
+    position: absolute;
+    top: 1220px;
+    left: 240px;
+    line-height: 80px;
+}
+#sub1 {
+    font-size: 28px;
+    font-weight: 600;
+    position: absolute;
+    top: 1510px;
+    left: 240px;
+}
+
+/* 슬라이더 사진 넣기 */
+
+.center {
+    width: 100%;
+    /* width 수정해야될수도 */
+    position: absolute;
+    top: 1650px;
+    left: 240px;
+}
+.center img {
+    width: 350px;
+    height: 450px;
+    /* background:gray; */
+    /* border: 1px solid red; */
+    border-radius: 30px;
+}
+
+/* 검정색 올라오게 */
+
+/* 안보였다가 올라오게 수정하기!! */
+
+.prod-list {
+    margin:0;
+    padding:0;
+}
+.prod-list .li {
+    position: relative;
+    float: left;
+    padding: 0;
+    margin: 10px;
+}
+.prod-list img {
+    margin:0;
+    padding:0;
+    float:left;
+    z-index:5;
+}   
+.caption {
+    position: absolute;
+    top: 230px;
+    width: 350px;
+    height: 200px;
+    padding-top: 20px;
+    background: rgba(0,0,0,0.5);
+    z-index: 10;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border-radius: 0 0 30px 30px;
+    display: none;
+}
+  .li:hover .caption {
+    transform: translateY(0px) ;
+    display: block;
+  }
+  .caption h3 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 25px 0 0 40px;
+    color: white;
+  }
+  .caption p {
+    margin: 20px 0 -5px 40px;
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+/* 버튼, 위치 애월읍사무소 넣기 */
+
+
+/* 3번째 메뉴에 쓸 예제 복붙 */
+
+#hr1 {
+    width: 100%;
+    border: 1px solid #d8d8d8;
+    position: absolute;
+    top: 2250px;
+}
+#near1 {
+    font-size: 63px;
+    font-weight: bold;
+    position: absolute;
+    top: 2400px;
+    left: 240px;
+    line-height: 80px;
+}
+#sub2 {
+    font-size: 28px;
+    font-weight: 600;
+    position: absolute;
+    top: 2690px;
+    left: 240px;
+}
+
+/* 3번 예제 상자 */
+
+#photo01 img {
+    width: 260px;
+    height: 260px;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 2880px;
+    left: 240px;
+    border-radius: 30px;
+}
+.item p:nth-child(2) {
+    position: absolute;
+    top: 2900px;
+    left: 545px;
+    border-radius: 30px;
+    color: #fd2525;
+    font-size: 25px;
+    font-weight: 450;
+}
+.item p:nth-child(3) {
+    position: absolute;
+    top: 2950px;
+    left: 545px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 500;
+}
+.item p:nth-child(4) {
+    position: absolute;
+    top: 3013px;
+    left: 545px;
+    border-radius: 30px;
+    font-size: 28px;
+    font-weight: 400;
+    color: #464646;
+}
+.item p:last-child {
+    position: absolute;
+    top: 3065px;
+    left: 545px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 400;
+    color: #fd2525;
+}
+#photo02 img {
+    width: 260px;
+    height: 260px;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 3250px;
+    left: 240px;
+    border-radius: 30px;
+}
+.item1 p:nth-child(2) {
+    position: absolute;
+    top: 3270px;
+    left: 545px;
+    border-radius: 30px;
+    color: #fd2525;
+    font-size: 25px;
+    font-weight: 450;
+}
+.item1 p:nth-child(3) {
+    position: absolute;
+    top: 3320px;
+    left: 545px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 500;
+}
+.item1 p:nth-child(4) {
+    position: absolute;
+    top: 3383px;
+    left: 545px;
+    border-radius: 30px;
+    font-size: 28px;
+    font-weight: 400;
+    color: #464646;
+}
+.item1 p:last-child {
+    position: absolute;
+    top: 3435px;
+    left: 545px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 400;
+    color: #fd2525;
+}
+#photo03 img {
+    width: 260px;
+    height: 260px;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 3620px;
+    left: 240px;
+    border-radius: 30px;
+}
+.item2 p:nth-child(2) {
+    position: absolute;
+    top: 3640px;
+    left: 545px;
+    border-radius: 30px;
+    color: #fd2525;
+    font-size: 25px;
+    font-weight: 450;
+}
+.item2 p:nth-child(3) {
+    position: absolute;
+    top: 3690px;
+    left: 545px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 500;
+}
+.item2 p:nth-child(4) {
+    position: absolute;
+    top: 3753px;
+    left: 545px;
+    border-radius: 30px;
+    font-size: 28px;
+    font-weight: 400;
+    color: #464646;
+}
+.item2 p:last-child {
+    position: absolute;
+    top: 3805px;
+    left: 545px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 400;
+    color: #fd2525;
+}
+/* 오른쪽 사진 */
+
+#photo04 img {
+    width: 260px;
+    height: 260px;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 2880px;
+    left: 1070px;
+    border-radius: 30px;
+}
+.item3 p:nth-child(2) {
+    position: absolute;
+    top: 2900px;
+    left: 1375px;
+    border-radius: 30px;
+    color: #fd2525;
+    font-size: 25px;
+    font-weight: 450;
+}
+.item3 p:nth-child(3) {
+    position: absolute;
+    top: 2950px;
+    left: 1375px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 500;
+}
+.item3 p:nth-child(4) {
+    position: absolute;
+    top: 3013px;
+    left: 1375px;
+    border-radius: 30px;
+    font-size: 28px;
+    font-weight: 400;
+    color: #464646;
+}
+.item3 p:last-child {
+    position: absolute;
+    top: 3065px;
+    left: 1375px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 400;
+    color: #fd2525;
+}
+#photo05 img {
+    width: 260px;
+    height: 260px;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 3250px;
+    left: 1070px;
+    border-radius: 30px;
+}
+.item4 p:nth-child(2) {
+    position: absolute;
+    top: 3270px;
+    left: 1375px;
+    border-radius: 30px;
+    color: #fd2525;
+    font-size: 25px;
+    font-weight: 450;
+}
+.item4 p:nth-child(3) {
+    position: absolute;
+    top: 3320px;
+    left: 1375px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 500;
+}
+.item4 p:nth-child(4) {
+    position: absolute;
+    top: 3383px;
+    left: 1375px;
+    border-radius: 30px;
+    font-size: 28px;
+    font-weight: 400;
+    color: #464646;
+}
+.item4 p:last-child {
+    position: absolute;
+    top: 3435px;
+    left: 1375px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 400;
+    color: #fd2525;
+}
+#photo06 img {
+    width: 260px;
+    height: 260px;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 3620px;
+    left: 1070px;
+    border-radius: 30px;
+}
+.item5 p:nth-child(2) {
+    position: absolute;
+    top: 3640px;
+    left: 1375px;
+    border-radius: 30px;
+    color: #fd2525;
+    font-size: 25px;
+    font-weight: 450;
+}
+.item5 p:nth-child(3) {
+    position: absolute;
+    top: 3690px;
+    left: 1375px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 500;
+}
+.item5 p:nth-child(4) {
+    position: absolute;
+    top: 3753px;
+    left: 1375px;
+    border-radius: 30px;
+    font-size: 28px;
+    font-weight: 400;
+    color: #464646;
+}
+.item5 p:last-child {
+    position: absolute;
+    top: 3805px;
+    left: 1375px;
+    border-radius: 30px;
+    font-size: 36px;
+    font-weight: 400;
+    color: #fd2525;
+}
+
+@media screen and (min-width: 320px; /*여기는 최소값 창 사이즈가 몇픽셀일때 를 조건으로 넣으면 돼*/) {
+    /* 여기서부터 크기 조정해야할것들 다 집어넣고 조정하면 되고 */
+    
+}
+
+/* file:///C:/design/HTML5/new/grid_gallery.html */
+/* file:///C:/design/HTML5/new/new_03.html */

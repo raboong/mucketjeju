@@ -1,0 +1,313 @@
+/* 
+::before / ::after 설명
+1. ::before 역할 - 선택한 앨리먼트(요소=태그)앞에 가상 콘텐츠 삽입하는 역할
+
+2. ::after 역할 - 선택한 앨리먼트 위에 가상 콘텐츠 삽입하는 역할
+
+*/
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: pretendard;
+}
+#wrap {
+    width: 100%;
+    position: relative;
+}
+
+/* 메뉴 */
+#gnb {
+    font-weight: bold;
+}
+header img {
+    width: 130px;
+    margin: 10px 0 0 80px;
+}
+ul {
+    list-style: none;
+    font-size: 16px;
+}
+.snb li {
+    margin-top: 72px;
+    font-weight: normal;
+}
+header a {
+    text-decoration: none;
+    color: #000;
+}
+a:hover {
+    color: #ff4e60;
+}
+
+header {
+    width: 100vw;
+    background: #ffffff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 0 100px;
+    border-bottom: 1px solid #d8d8d8;
+    display:flex;
+    /* 플렉스는 반응형 웹 사용 시 쓰는 것
+    padding, margin을 사용할 수 없음 */
+    justify-content: space-between ;
+    /* 컨텐츠 사이의 간격을 균일하게 처리 */
+    box-sizing: border-box;
+    z-index: 2000;
+    /* border 안쪽으로 들어와라 */
+}
+header img {
+    width: 150px;
+    padding: 30px 0;
+}
+header #gnb {
+    display: flex;
+    justify-content: space-evenly;
+    /* 컨텐츠 사이와 양끝 간격 균일하게 처리 */
+    align-items: center;
+    flex-basis: 85%;
+}
+
+header > #gnb::before {
+    /* 컨텐츠 빈공간 출력 */
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 171px;
+    left: 0;
+    background: #fff;
+    border-top: 1px solid #d8d8d8;
+    box-shadow: 0px 10px 10px 0px rgba(186, 186, 187, 0.06) ;
+    display: block;
+    height: 200px;
+}
+
+header > #gnb.on::before {
+    display: block;
+}
+
+header > #gnb::before {
+    display: none;
+}
+
+#util {
+    position: absolute;
+    right: 260px;
+    padding: 20px 0;
+}
+
+header > #gnb > li .snb {
+    position: absolute;
+    top: 150px;
+    display: none;
+    /* display:none을 사용하는 이유 -> 일시적으로 안보이게 하려고 */
+}
+
+header > #gnb.on >li .snb {
+    display: block;
+}
+header > #gnb > li >.snb > ul > li+li {
+    margin-top: 20px;
+}
+#line img {
+    position: absolute;
+    width: 32.5px;
+    top: -50px;
+    right: 550px;
+}
+
+/* 상세페이지 */
+#sangwrap {
+    position: absolute;
+    left: 202px;
+}
+#lec {
+    width: 470px;
+    height: 645px;
+    position: absolute;
+    top: 285px;
+    left: 255px;
+    border-radius: 30px;
+}
+#text {
+    position: absolute;
+}
+#title li:nth-child(1) { 
+    width: 500px;
+    font-size: 32px;
+    position: absolute;
+    top: 295px;
+    left: 800px;
+    font-weight: 600;
+}
+
+#title li:nth-child(2) {
+    width: 100px;
+    font-size: 16px;
+    position: absolute;
+    top: 347px;
+    left: 800px;
+    font-weight: 400;
+    color: #949494;
+}
+#title li:nth-child(3) {
+    width: 150px;
+    font-size: 25px;
+    position: absolute;
+    top: 383px;
+    left: 800px;
+    color: #ff4e60;
+    font-weight: 500;
+}
+#title li:nth-child(4) {
+    width: 300px;
+    font-size: 16px;
+    position: absolute;
+    top: 389px;
+    left: 870px;
+    color: #464646;
+    font-weight: 300;
+}
+#title li:nth-child(5) {
+    width: 300px;
+    font-size: 18px;
+    position: absolute;
+    top: 430px;
+    left: 800px;
+    color: #464646;;
+}
+#title li:nth-child(6) {
+    width: 90px;
+    padding: 5px ;
+    font-size: 16px;
+    text-align: center;
+    position: absolute;
+    top: 430px;
+    left: 1130px;
+    color: #ff4e60;
+    border: 1px solid #ff4e60;
+    border-radius: 20px;
+}
+#title li:nth-child(6):hover {
+    color: white;
+    background: #ff4e60;
+    cursor: pointer;
+}
+#title hr {
+    width: 460px;
+    border: 1px solid #d8d8d8;
+    position: absolute;
+    top: 475px;
+    left: 800px;
+}
+
+/* 2번째 상세 */
+
+#title1 hr {
+    width: 460px;
+    border: 1px solid #d8d8d8;
+    position: absolute;
+    top: 703px;
+    left: 800px;
+}
+#icon1 {
+    width: 30px;
+    position: absolute;
+    top: 510px;
+    left: 800px;
+}
+#title1 li:nth-child(3) {
+    width: 350px;
+    font-size: 18px;
+    position: absolute;
+    top: 514px;
+    left: 845px;
+}
+#icon #icon2 {
+    width: 30px;
+    position: absolute;
+    top: 560px;
+    left: 800px;
+}
+#title1 li:nth-child(4) {
+    width: 350px;
+    font-size: 18px;
+    position: absolute;
+    top: 560px;
+    left: 845px;
+    line-height: 30px;
+}
+#icon #icon3 {
+    width: 30px;
+    position: absolute;
+    top: 640px;
+    left: 800px;
+}
+#title1 li:nth-child(5) {
+    width: 350px;
+    font-size: 18px;
+    position: absolute;
+    top: 637px;
+    left: 845px;
+}
+#title1 li:nth-child(7) {
+    width: 350px;
+    font-size: 20px;
+    position: absolute;
+    top: 735px;
+    left: 845px;
+    font-weight: 500;
+    /* color: #ff4e60; */
+}
+#icon #icon4 {
+    width: 30px;
+    position: absolute;
+    top: 732px;
+    left: 800px;
+}
+#title1 li:nth-child(8) {
+    width: 350px;
+    font-size: 18px;
+    position: absolute;
+    top: 775px;
+    left: 845px;
+    line-height: 30px;
+}
+#title1 li:nth-child(9) {
+    width: 350px;
+    font-size: 18px;
+    position: absolute;
+    top: 775px;
+    left: 845px;
+    line-height: 30px;
+    text-align: end;
+}
+
+/* footer */
+
+footer > div {
+    width: 100%;
+    height: 190px;
+    position: absolute;
+    top: 960px;
+    
+}
+
+#fowrap {
+    position: absolute;
+}
+
+#setitle {
+    position: absolute;
+    top: 70px;
+    left: 595px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#setitle b:nth-child(1) {
+    color: #fd2525;
+}
